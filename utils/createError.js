@@ -6,7 +6,7 @@ const createError = ( status , message) => {
 
     err.status = status;
 
-    message = message
+    message = message ;
 
     return err
 }
