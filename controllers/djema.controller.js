@@ -23,8 +23,12 @@ export const createDjema = async (req, res, next) => {
     }
 }
 
+
+
 export const deleteDjema = async (req, res, next) => {
     try {
+
+        
 
         const djema = await Djema.findById(req.params.id);
 
