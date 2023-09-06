@@ -1,10 +1,11 @@
 import express from "express"
-import { Order } from "../controllers/order.controller.js";
-
+import {verifyToken} from "../middleware/jwt.js" 
+import {createOrder, getOrders} from "../controllers/order.controller.js"
 
 const router = express.Router()
 
-router.get("/test", Order)
+router.post("/:djemaId", verifyToken,  createOrder)
+router.get("/", verifyToken,  getOrders)
 
 export default router;
     

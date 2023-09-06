@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import  jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import createError from "../utils/createError.js";
 
 export const register = async (req, res, next) => {
@@ -31,39 +31,39 @@ export const login = async (req, res, next) => {
 
   try {
 
-    const user =  await User.findOne({username: req.body.username});
+    const user = await User.findOne({ username: req.body.username });
 
-    if(!user) return next(createError(404, "Nous n'avons pas trouvé cet utilisateur chez djemadarii"));
-        
+    if (!user) return res.status(404).send("Le nom d'utilisateur est Incorrect ! ");
+
     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
 
-    if(!isCorrect) 
+    if (!isCorrect)
 
-    return next(createError(400, "Mot de passe ou utilisateur incorrect !"));
+      return res.status(400).send("Le mot de passe est incorrect !");
 
     const token = jwt.sign({
 
       id: user._id,
 
-      isSeller : user.isSeller,
+      isSeller: user.isSeller,
 
-    }, process.env.JWT_KEY );
+    }, process.env.JWT_KEY);
 
-    const {password, ...info} = user._doc;
+    const { password, ...info } = user._doc;
 
-     res
-     
-        .cookie("accessToken", token, {
+    res
 
-      httpOnly : true,
+      .cookie("accessToken", token, {
 
-    })
-    .status(200)
-    .send(info);
+        httpOnly: true,
+
+      })
+      .status(200)
+      .send(info);
 
   } catch (err) {
-  
-   next(err)
+
+    next(err)
 
   }
 
@@ -71,12 +71,12 @@ export const login = async (req, res, next) => {
 
 export const logout = async (req, res) => {
 
-res.
+  res.
 
-   clearCookie("accessToken", {
-     sameSite: "none", 
-     secure : true,
-}).status(200)
-  .send("Déconnexion fait avec succès !");
+    clearCookie("accessToken", {
+      sameSite: "none",
+      secure: true,
+    }).status(200)
+    .send("Déconnexion fait avec succès !");
 
 }

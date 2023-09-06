@@ -1,4 +1,9 @@
-export const Message = (req, res)=> {
-    res.send("Jethron le full stack")
+export const Message = async (req, res, next) => {
+
+    try {
+
+    } catch (error) {
+        next(error)
     }
-    
+
+}
