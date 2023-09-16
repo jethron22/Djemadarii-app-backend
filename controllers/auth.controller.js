@@ -47,7 +47,8 @@ export const register = async (req, res, next) => {
 
       isSeller: user.isSeller,
 
-    }, process.env.JWT_KEY);
+    }, process.env.JWT_KEY)
+
 
     const { password, ...info } = user._doc;
 
