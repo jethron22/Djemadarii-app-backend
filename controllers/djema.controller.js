@@ -33,11 +33,9 @@ export const deleteDjema = async (req, res, next) => {
         const djema = await Djema.findById(req.params.id);
 
         if (djema.userId !== req.userId)
-
-            return res.status(403).send("Vous ne pouvez que supprimer votre Djema !");
+        return res.status(403).send("Vous ne pouvez que supprimer votre Djema !");
 
         await Djema.findByIdAndDelete(req.params.id);
-
         res.status(200).send("Vous avez supprimé votre Djema avec succès")
 
     } catch (err) {

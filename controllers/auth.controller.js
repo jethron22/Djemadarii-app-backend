@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import createError from "../utils/createError.js";
+import * as bcrypt from "bcrypt";
+import * as jwt from "jsonwebtoken";
+
 
 export const register = async (req, res, next) => {
 
@@ -27,7 +27,7 @@ export const register = async (req, res, next) => {
   }
 }
 
-export const login = async (req, res, next) => {
+  export const login = async (req, res, next) => {
 
   try {
 
@@ -80,3 +80,4 @@ export const logout = async (req, res) => {
     .send("Déconnexion fait avec succès !");
 
 }
+
