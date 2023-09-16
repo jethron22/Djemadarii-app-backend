@@ -5,13 +5,13 @@ const ConversationSchema = new Schema({
     id: {
         type: String,
         required: true,
-        unique,
+        unique: true,
     },
 
     sellerId: {
         type: String,
         required: true,
-        unique,
+        unique: true
     },
 
     buyerId: {

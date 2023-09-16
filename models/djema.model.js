@@ -5,17 +5,17 @@ const DjemaSchema = new Schema({
     
     userId: {
         type: String,
-        required,
+        required: true,
     },
 
     title: {
         type: String,
-        required,
+        required: true,
     },
 
     desc: {
         type: String,
-        required,
+        required: true,
     },
 
     totalStars: {
@@ -35,17 +35,18 @@ const DjemaSchema = new Schema({
 
     price: {
         type: Number,
-        required,
+        required: true,
     },
 
     cover: {
         type: String,
-        required,
+        default: "https://img.freepik.com/photos-premium/main-masculine-touchant-dans-concept-service_220873-7826.jpg?w=740"
+       
     },
 
     images: {
         type: [String],
-        required: false,
+        
     },
 
     shortTitle: {
